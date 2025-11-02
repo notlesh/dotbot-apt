@@ -10,7 +10,7 @@ class Apt(dotbot.Plugin):
 
     def handle(self, directive: str, packages: List[str]) -> bool:
         success = self._run(["apt", "update"], "Updating APT") \
-                  and self._run(["apt", "install", "-y"] + packages,
+                  and self._run(["sudo", "apt", "install", "-y"] + packages,
                                 "Installing the APT packages: {}".format(", ".join(packages)))
 
         if success:
